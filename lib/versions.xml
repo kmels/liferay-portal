@@ -988,6 +988,30 @@
 		</licenses>
 	</library>
 	<library>
+		<file-name>portal/apache-mime4j-core.jar</file-name>
+		<version>0.7.2</version>
+		<project-name>Mime4j</project-name>
+		<project-url>http://james.apache.org/mime4j/</project-url>
+		<licenses>
+			<license>
+				<license-name>Apache License 2.0</license-name>
+					<copyright-notice>Copyright (c) 2012 The Apache Software Foundation. All rights reserved.</copyright-notice>
+			</license>
+		</licenses>
+	</library>
+	<library>
+		<file-name>portal/apache-mime4j-dom.jar</file-name>
+		<version>0.7.2</version>
+		<project-name>Mime4j</project-name>
+		<project-url>http://james.apache.org/mime4j/</project-url>
+		<licenses>
+			<license>
+				<license-name>Apache License 2.0</license-name>
+				<copyright-notice>Copyright (c) 2012 The Apache Software Foundation. All rights reserved.</copyright-notice>
+			</license>
+		</licenses>
+	</library>
+	<library>
 		<file-name>portal/asm.jar</file-name>
 		<version>3.3</version>
 		<project-name>ASM</project-name>
@@ -1193,6 +1217,20 @@
 		</comments>
 	</library>
 	<library>
+		<file-name>portal/boilerpipe.jar</file-name>
+		<version>1.1.0</version>
+		<project-name>Boilerpipe</project-name>
+		<project-url>http://code.google.com/p/boilerpipe/</project-url>
+		<licenses>
+			<license>
+				<license-name>Apache License 2.0</license-name>
+			</license>
+		</licenses>
+		<comments>
+			Removed org.cyberneko.* because it conflicts with nekohtml.jar.
+		</comments>
+	</library>
+	<library>
 		<file-name>portal/bsh.jar</file-name>
 		<version>2.0 B4</version>
 		<project-name>BeanShell</project-name>
@@ -1377,7 +1415,7 @@
 	</library>
 	<library>
 		<file-name>portal/commons-compress.jar</file-name>
-		<version>1.1</version>
+		<version>1.4.1</version>
 		<project-name>Commons Compress</project-name>
 		<project-url>http://commons.apache.org/compress</project-url>
 		<licenses>
@@ -1711,13 +1749,13 @@
 	</library>
 	<library>
 		<file-name>portal/fontbox.jar</file-name>
-		<version>1.6.0</version>
+		<version>1.7.1</version>
 		<project-name>PDFBox</project-name>
 		<project-url>http://pdfbox.apache.org</project-url>
 		<licenses>
 			<license>
 				<license-name>Apache License 2.0</license-name>
-				<copyright-notice>Copyright (c) 2011 The Apache Software Foundation. All rights reserved.</copyright-notice>
+				<copyright-notice>Copyright (c) 2012 The Apache Software Foundation. All rights reserved.</copyright-notice>
 			</license>
 		</licenses>
 	</library>
@@ -1740,6 +1778,18 @@
 		<licenses>
 			<license>
 				<license-name>Apache License 2.0</license-name>
+			</license>
+		</licenses>
+	</library>
+	<library>
+		<file-name>portal/geronimo-stax-api_1.0_spec.jar</file-name>
+		<version>1.0.1</version>
+		<project-name>Geronimo Stax API 1.0 Spec</project-name>
+		<project-url>http://geronimo.apache.org/maven/specs/geronimo-jaxws_2.1_spec/1.0/</project-url>
+		<licenses>
+			<license>
+				<license-name>Apache License 2.0</license-name>
+				<copyright-notice>Copyright (c) 2003-2006 The Apache Software Foundation</copyright-notice>
 			</license>
 		</licenses>
 	</library>
@@ -1882,6 +1932,17 @@
 			<license>
 				<license-name>LGPL 2.1</license-name>
 				<copyright-notice>Copyright (c) Bernhard Bablok 2008-2010</copyright-notice>
+			</license>
+		</licenses>
+	</library>
+	<library>
+		<file-name>portal/isoparser.jar</file-name>
+		<version>1.0-RC-1</version>
+		<project-name>isoparser</project-name>
+		<project-url>http://code.google.com/p/mp4parser/</project-url>
+		<licenses>
+			<license>
+				<license-name>Apache License 2.0</license-name>
 			</license>
 		</licenses>
 	</library>
@@ -2115,13 +2176,25 @@
 	</library>
 	<library>
 		<file-name>portal/jempbox.jar</file-name>
-		<version>1.6.0</version>
+		<version>1.7.1</version>
 		<project-name>PDFBox</project-name>
 		<project-url>http://pdfbox.apache.org</project-url>
 		<licenses>
 			<license>
 				<license-name>Apache License 2.0</license-name>
-				<copyright-notice>Copyright (c) 2011 The Apache Software Foundation. All rights reserved.</copyright-notice>
+				<copyright-notice>Copyright (c) 2012 The Apache Software Foundation. All rights reserved.</copyright-notice>
+			</license>
+		</licenses>
+	</library>
+	<library>
+		<file-name>portal/jempbox.jar</file-name>
+		<version>1.7.1</version>
+		<project-name>PDFBox</project-name>
+		<project-url>http://pdfbox.apache.org</project-url>
+		<licenses>
+			<license>
+				<license-name>Apache License 2.0</license-name>
+				<copyright-notice>Copyright (c) 2012 The Apache Software Foundation. All rights reserved.</copyright-notice>
 			</license>
 		</licenses>
 	</library>
@@ -2241,6 +2314,17 @@
 		<licenses>
 			<license>
 				<license-name>Apache License 1.1</license-name>
+			</license>
+		</licenses>
+	</library>
+	<library>
+		 <file-name>portal/juniversalchardet.jar</file-name>
+		<version>1.0.3</version>
+		<project-name>universalchardet</project-name>
+		<project-url>http://juniversalchardet.googlecode.com/</project-url>
+		<licenses>
+			<license>
+				<license-name>MPL 1.1</license-name>
 			</license>
 		</licenses>
 	</library>
@@ -2505,7 +2589,7 @@
 	</library>
 	<library>
 		<file-name>portal/metadata-extractor.jar</file-name>
-		<version>2.4.0-beta-1</version>
+		<version>2.6.2</version>
 		<project-name>Metadata Extractor</project-name>
 		<project-url>http://www.drewnoakes.com/code/exif</project-url>
 		<licenses>
@@ -2548,28 +2632,39 @@
 			</license>
 		</licenses>
 	</library>
-    <library>
-        <file-name>portal/oauth.jar</file-name>
-        <version>20100601</version>
-        <project-name>OAuth Core</project-name>
-        <project-url>http://code.google.com/p/oauth</project-url>
-        <licenses>
-            <license>
-                <license-name>Apache License 2.0</license-name>
-            </license>
-        </licenses>
-    </library>
-    <library>
-        <file-name>portal/oauth-provider.jar</file-name>
-        <version>20100601</version>
-        <project-name>OAuth Core: Provider</project-name>
-        <project-url>http://code.google.com/p/oauth</project-url>
-        <licenses>
-            <license>
-                <license-name>Apache License 2.0</license-name>
-            </license>
-        </licenses>
-    </library>
+    	<library>
+		<file-name>portal/netcdf.jar</file-name>
+		<version>4.2-min</version>
+		<project-name>Netcdf-Java / Common Data Model Library</project-name>
+		<project-url>http://www.unidata.ucar.edu/packages/netcdf-java/</project-url>
+		<licenses>
+			<license>
+				 <copyright-notice>Copyright 1998-2009 University Corporation for Atmospheric Research/Unidata</copyright-notice>
+			</license>
+		</licenses>
+	</library>
+	<library>
+		<file-name>portal/oauth.jar</file-name>
+		<version>20100601</version>
+		<project-name>OAuth Core</project-name>
+		<project-url>http://code.google.com/p/oauth</project-url>
+		<licenses>
+		    <license>
+		        <license-name>Apache License 2.0</license-name>
+		    </license>
+		</licenses>
+	</library>
+	<library>
+		<file-name>portal/oauth-provider.jar</file-name>
+		<version>20100601</version>
+		<project-name>OAuth Core: Provider</project-name>
+		<project-url>http://code.google.com/p/oauth</project-url>
+		<licenses>
+		    <license>
+		        <license-name>Apache License 2.0</license-name>
+		    </license>
+		</licenses>
+	</library>
 	<library>
 		<file-name>portal/odmg.jar</file-name>
 		<version></version>
@@ -2624,61 +2719,61 @@
 	</library>
 	<library>
 		<file-name>portal/pdfbox.jar</file-name>
-		<version>1.6.0</version>
+		<version>1.7.1</version>
 		<project-name>PDFBox</project-name>
 		<project-url>http://pdfbox.apache.org</project-url>
 		<licenses>
 			<license>
 				<license-name>Apache License 2.0</license-name>
-				<copyright-notice>Copyright (c) 2011 The Apache Software Foundation. All rights reserved.</copyright-notice>
+				<copyright-notice>Copyright (c) 2012 The Apache Software Foundation. All rights reserved.</copyright-notice>
 			</license>
 		</licenses>
 	</library>
 	<library>
 		<file-name>portal/poi.jar</file-name>
-		<version>3.7</version>
+		<version>3.8</version>
 		<project-name>POI</project-name>
 		<project-url>http://poi.apache.org</project-url>
 		<licenses>
 			<license>
 				<license-name>Apache License 2.0</license-name>
-				<copyright-notice>Copyright (c) 2001-2007 The Apache Software Foundation</copyright-notice>
+				<copyright-notice>Copyright (c) 2009 The Apache Software Foundation</copyright-notice>
 			</license>
 		</licenses>
 	</library>
 	<library>
 		<file-name>portal/poi-ooxml.jar</file-name>
-		<version>3.7</version>
+		<version>3.8</version>
 		<project-name>POI</project-name>
 		<project-url>http://poi.apache.org</project-url>
 		<licenses>
 			<license>
 				<license-name>Apache License 2.0</license-name>
-				<copyright-notice>Copyright (c) 2001-2007 The Apache Software Foundation</copyright-notice>
+				<copyright-notice>Copyright (c) 2009 The Apache Software Foundation</copyright-notice>
 			</license>
 		</licenses>
 	</library>
 	<library>
 		<file-name>portal/poi-ooxml-schemas.jar</file-name>
-		<version>3.7</version>
+		<version>3.8</version>
 		<project-name>POI</project-name>
 		<project-url>http://poi.apache.org</project-url>
 		<licenses>
 			<license>
 				<license-name>Apache License 2.0</license-name>
-				<copyright-notice>Copyright (c) 2001-2007 The Apache Software Foundation</copyright-notice>
+				<copyright-notice>Copyright (c) 2009 The Apache Software Foundation</copyright-notice>
 			</license>
 		</licenses>
 	</library>
 	<library>
 		<file-name>portal/poi-scratchpad.jar</file-name>
-		<version>3.7</version>
+		<version>3.8</version>
 		<project-name>POI</project-name>
 		<project-url>http://poi.apache.org</project-url>
 		<licenses>
 			<license>
 				<license-name>Apache License 2.0</license-name>
-				<copyright-notice>Copyright (c) 2001-2007 The Apache Software Foundation</copyright-notice>
+				<copyright-notice>Copyright (c) 2009 The Apache Software Foundation</copyright-notice>
 			</license>
 		</licenses>
 	</library>
@@ -3141,7 +3236,7 @@
 	</library>
 	<library>
 		<file-name>portal/tagsoup.jar</file-name>
-		<version>1.2</version>
+		<version>1.2.1</version>
 		<project-name>TagSoup</project-name>
 		<project-url>http://home.ccil.org/~cowan/XML/tagsoup</project-url>
 		<licenses>
@@ -3152,7 +3247,7 @@
 	</library>
 	<library>
 		<file-name>portal/tika-core.jar</file-name>
-		<version>0.9</version>
+		<version>1.3</version>
 		<project-name>Tika</project-name>
 		<project-url>http://tika.apache.org</project-url>
 		<licenses>
@@ -3163,7 +3258,7 @@
 	</library>
 	<library>
 		<file-name>portal/tika-parsers.jar</file-name>
-		<version>0.9</version>
+		<version>1.3</version>
 		<project-name>Tika</project-name>
 		<project-url>http://tika.apache.org</project-url>
 		<licenses>
@@ -3267,6 +3362,28 @@
 			</license>
 		</licenses>
 	</library>
+	<library>
+		<file-name>portal/vorbis-java-core.jar</file-name>
+		<version>0.1</version>
+		<project-name>Vorbis-Java</project-name>
+		<project-url>http://xiph.org/vorbis</project-url>
+		<licenses>
+			<license>
+				<license-name>Apache License 2.0</license-name>
+			</license>
+		</licenses>
+	</library>
+	<library>
+		<file-name>portal/vorbis-java-tika.jar</file-name>
+		<version>0.1</version>
+		<project-name>Vorbis-Java</project-name>
+		<project-url>http://xiph.org/vorbis</project-url>
+		<licenses>
+			<license>
+				<license-name>Apache License 2.0</license-name>
+			</license>
+		</licenses>
+	</library>	
 	<library>
 		<file-name>portal/wsdl4j.jar</file-name>
 		<version>1.6</version>
@@ -3400,6 +3517,17 @@
 		</licenses>
 	</library>
 	<library>
+		<file-name>portal/xmpcore.jar</file-name>
+		<version>5.1.2</version>
+		<project-name>xmpcore</project-name>
+		<project-url>http://www.adobe.com/devnet/xmp.html</project-url>
+		<licenses>
+			<license>
+				<license-name>BSD Style License</license-name>
+			</license>
+		</licenses>
+	</library>
+	<library>
 		<file-name>portal/xpp3.jar</file-name>
 		<version>1.1.4c</version>
 		<project-name>XPP3</project-name>
@@ -3433,5 +3561,14 @@
 				<license-name>LGPL 3</license-name>
 			</license>
 		</licenses>
+	</library>
+	<library>
+	 	<file-name>portal/xz.jar</file-name>
+		<version>1.0</version>
+		<project-name>xz</project-name>
+		<project-url>http://tukaani.org/xz/java.html</project-url>
+		<license>
+			<license-name>Public Domain</license-name>
+		</license>
 	</library>
 </libraries>
