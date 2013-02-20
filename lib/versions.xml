@@ -2731,7 +2731,7 @@
 	</library>
 	<library>
 		<file-name>portal/poi.jar</file-name>
-		<version>3.8</version>
+		<version>3.9</version>
 		<project-name>POI</project-name>
 		<project-url>http://poi.apache.org</project-url>
 		<licenses>
@@ -2743,7 +2743,7 @@
 	</library>
 	<library>
 		<file-name>portal/poi-ooxml.jar</file-name>
-		<version>3.8</version>
+		<version>3.9</version>
 		<project-name>POI</project-name>
 		<project-url>http://poi.apache.org</project-url>
 		<licenses>
@@ -2755,7 +2755,7 @@
 	</library>
 	<library>
 		<file-name>portal/poi-ooxml-schemas.jar</file-name>
-		<version>3.8</version>
+		<version>3.9</version>
 		<project-name>POI</project-name>
 		<project-url>http://poi.apache.org</project-url>
 		<licenses>
@@ -2767,7 +2767,7 @@
 	</library>
 	<library>
 		<file-name>portal/poi-scratchpad.jar</file-name>
-		<version>3.8</version>
+		<version>3.9</version>
 		<project-name>POI</project-name>
 		<project-url>http://poi.apache.org</project-url>
 		<licenses>
