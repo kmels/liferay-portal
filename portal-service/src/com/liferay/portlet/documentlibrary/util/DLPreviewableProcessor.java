@@ -790,7 +790,7 @@ public abstract class DLPreviewableProcessor extends BaseDLProcessorImpl {
 		if (!portletDataContext.isPerformDirectBinaryImport()) {
 			importPreviewFromLAR(
 				portletDataContext, importedFileEntry, fileEntryElement,
-				binPathSuffix, fileIndex);
+				binPathSuffix, previewType, fileIndex);
 		}
 		else {
 			FileVersion importedFileVersion =
@@ -824,7 +824,8 @@ public abstract class DLPreviewableProcessor extends BaseDLProcessorImpl {
 
 	protected void importPreviewFromLAR(
 			PortletDataContext portletDataContext, FileEntry fileEntry,
-			Element fileEntryElement, String binPathSuffix, int fileIndex)
+			Element fileEntryElement, String binPathSuffix, String previewType,
+			int fileIndex)
 		throws Exception {
 
 		FileVersion fileVersion = fileEntry.getFileVersion();
@@ -832,7 +833,7 @@ public abstract class DLPreviewableProcessor extends BaseDLProcessorImpl {
 		String binPathSegment = null;
 
 		if (fileIndex < 0) {
-			binPathSegment = getPreviewType(fileVersion);
+			binPathSegment = previewType;
 		}
 		else {
 			binPathSegment = Integer.toString(fileIndex + 1);
@@ -861,8 +862,7 @@ public abstract class DLPreviewableProcessor extends BaseDLProcessorImpl {
 			String previewFilePath = null;
 
 			if (fileIndex < 0) {
-				previewFilePath = getPreviewFilePath(
-					fileVersion, getPreviewType(fileVersion));
+				previewFilePath = getPreviewFilePath(fileVersion, previewType);
 			}
 			else {
 				previewFilePath = getPreviewFilePath(
