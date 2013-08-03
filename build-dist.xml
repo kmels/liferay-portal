@@ -436,6 +436,40 @@
 			<param name="deployer.app.server.lib.portal.dir" value="${app.server.parent.dir}/tomcat-${app.server.tomcat.version}/webapps/ROOT/WEB-INF/lib" />
 		</antcall>
 	</target>
+	
+	<target name="build-dist-tomee">
+		<if>
+			<equals arg1="${tomee.keep.app.server.properties}" arg2="true" />
+			<then>
+				<antcall target="unzip-tomee" inheritAll="false" />
+			</then>
+			<else>
+				<antcall target="unzip-tomee" />
+
+				<echo file="app.server.${user.name}.properties">app.server.type=tomee</echo>
+			</else>
+		</if>
+
+		<delete dir="${project.dir}/portal-web/classes" />
+
+		<ant target="deploy" inheritAll="false" />
+
+		<if>
+			<not>
+				<equals arg1="${tomee.keep.app.server.properties}" arg2="true" />
+			</not>
+			<then>
+				<delete file="app.server.${user.name}.properties" />
+			</then>
+		</if>
+
+		<antcall target="deploy-plugins">
+			<param name="deployer.dest.dir" value="${app.server.parent.dir}/tomee-${app.server.tomee.version}-${app.server.tomee.classifier}/webapps" />
+			<param name="deployer.app.server.type" value="tomee" />
+			<param name="deployer.app.server.lib.portal.dir" value="${app.server.parent.dir}/tomee-${app.server.tomee.version}-${app.server.tomee.classifier}/webapps/ROOT/WEB-INF/lib" />
+		</antcall>
+	</target>
+
 
 	<target name="build-shelf">
 		<exec dir="${project.dir}" executable="cmd.exe" os="${os.windows}">
@@ -723,6 +757,7 @@ know what you are doing as it can cause loss of data.
 		<antcall target="build-dist-resin" />
 		<antcall target="build-dist-tcat" />
 		<antcall target="build-dist-tomcat" />
+		<antcall target="build-dist-tomee" />
 
 		<antcall target="zip-api" />
 		<antcall target="zip-geronimo" />
@@ -738,6 +773,7 @@ know what you are doing as it can cause loss of data.
 		<antcall target="zip-src" />
 		<antcall target="zip-tcat" />
 		<antcall target="zip-tomcat" />
+		<antcall target="zip-tomee" />
 
 		<ant antfile="build-maven.xml" target="zip-maven" inheritAll="false" />
 
@@ -1426,6 +1462,87 @@ release was successful.</echo>
 
 		<chmod perm="a+x">
 			<fileset dir="${app.server.tomcat.bin.dir}">
+				<include name="*.sh" />
+			</fileset>
+		</chmod>
+	</target>
+	
+	<target name="unzip-tomee">
+		<delete dir="${app.server.tomee.dir}" />
+
+		<if>
+			<not>
+				<available file="${app.server.parent.dir}/${app.server.tomee.zip.name}" />
+			</not>
+			<then>
+				<mkdir dir="${app.server.parent.dir}" />
+
+				<get
+					dest="${app.server.parent.dir}/${app.server.tomee.zip.name}"
+					src="${app.server.tomee.zip.url}"
+					verbose="true"
+				/>
+			</then>
+		</if>
+
+		<basename file="${app.server.tomee.dir}" property="app.server.tomee.dir.name" />
+
+		<unzip
+			dest="${app.server.parent.dir}"
+			src="${app.server.parent.dir}/${app.server.tomee.zip.name}"
+		>
+			<patternset
+				excludes="apache-tomee-${app.server.tomee.version}-${app.server.tomee.classifier}/webapps/**"
+			/>
+			<mapper
+				type="glob"
+				from="apache-tomee-${app.server.tomee.version}-${app.server.tomee.classifier}/*"
+				to="${app.server.tomee.dir.name}/*"
+			/>
+		</unzip>
+
+		<mkdir dir="${app.server.tomee.dir}/webapps" />
+
+		<replace file="${app.server.tomee.dir}/conf/catalina.properties">
+			<replacetoken><![CDATA[common.loader=${catalina.base}/lib,${catalina.base}/lib/*.jar,${catalina.home}/lib,${catalina.home}/lib/*.jar]]></replacetoken>
+			<replacevalue><![CDATA[common.loader=${catalina.base}/lib,${catalina.base}/lib/*.jar,${catalina.home}/lib,${catalina.home}/lib/*.jar,${catalina.home}/lib/ext,${catalina.home}/lib/ext/*.jar]]></replacevalue>
+		</replace>
+
+		<replace file="${app.server.tomee.dir}/conf/server.xml">
+			<replacetoken><![CDATA[redirectPort="8443" />]]></replacetoken>
+			<replacevalue><![CDATA[redirectPort="8443" URIEncoding="UTF-8" />]]></replacevalue>
+		</replace>
+
+		<!--<replace file="${app.server.tomee.dir}/conf/server.xml">
+			<replacetoken><![CDATA[xmlValidation="false" xmlNamespaceAware="false">]]></replacetoken>
+			<replacevalue><![CDATA[xmlValidation="false" xmlNamespaceAware="false" deployXML="false">]]></replacevalue>
+		</replace>-->
+
+		<if>
+			<available file="${jdk.windows.home}/jre/bin/java.exe" />
+			<then>
+				<copy todir="${app.server.tomee.dir}/jre${jdk.windows.version}/win">
+					<fileset dir="${jdk.windows.home}/jre" />
+				</copy>
+			</then>
+		</if>
+
+		<copy
+			file="tools/servers/tomcat/bin/setenv.bat"
+			tofile="${app.server.tomcat.bin.dir}/setenv.bat"
+		>
+			<filterset>
+				<filter token="java.version" value="${jdk.windows.version}" />
+			</filterset>
+		</copy>
+
+		<copy
+			file="tools/servers/tomcat/bin/setenv.sh"
+			tofile="${app.server.tomee.bin.dir}/setenv.sh"
+		/>
+
+		<chmod perm="a+x">
+			<fileset dir="${app.server.tomee.bin.dir}">
 				<include name="*.sh" />
 			</fileset>
 		</chmod>
@@ -2348,6 +2465,13 @@ plugins.includes=</echo>
 		<antcall target="zip-executable">
 			<param name="zip.executable.file" value="liferay-portal-tomcat" />
 			<param name="zip.executable.dir" value="${app.server.tomcat.dir}" />
+		</antcall>
+	</target>
+	
+	<target name="zip-tomee">
+		<antcall target="zip-executable">
+			<param name="zip.executable.file" value="liferay-portal-tomee" />
+			<param name="zip.executable.dir" value="${app.server.tomee.dir}" />
 		</antcall>
 	</target>
 
