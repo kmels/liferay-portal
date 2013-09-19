@@ -48,7 +48,7 @@ public class BuildInfoBuilder {
 
 			String content = _fileUtil.read(file);
 			
-			String version = releaseProps.getProperty("lp.version") +"-"+ releaseProps.getProperty("pce.version");
+			String version = releaseProps.getProperty("lp.version");
 			
 			int x = content.indexOf("String _VERSION = \"");
 
