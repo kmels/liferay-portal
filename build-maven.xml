@@ -52,7 +52,7 @@ for GPG setup instructions.
 		<antcall target="deploy-artifacts">
 			<param name="lp.maven.repository.id" value="${lp.maven.release.repository.id}" />
 			<param name="lp.maven.repository.url" value="${lp.maven.release.repository.url}" />
-			<param name="lp.maven.version" value="${lp.version}" />
+			<param name="lp.maven.version" value="${lp.version}-${pce.version}" />
 		</antcall>
 	</target>
 
@@ -60,7 +60,7 @@ for GPG setup instructions.
 		<antcall target="deploy-artifacts">
 			<param name="lp.maven.repository.id" value="${lp.maven.snapshot.repository.id}" />
 			<param name="lp.maven.repository.url" value="${lp.maven.snapshot.repository.url}" />
-			<param name="lp.maven.version" value="${lp.version}-SNAPSHOT" />
+			<param name="lp.maven.version" value="${lp.version}-${pce.version}-SNAPSHOT" />
 		</antcall>
 	</target>
 
@@ -82,13 +82,13 @@ for GPG setup instructions.
 
 	<target name="install-release-artifacts">
 		<antcall target="install-artifacts">
-			<param name="lp.maven.version" value="${lp.version}" />
+			<param name="lp.maven.version" value="${lp.version}-${pce.version}" />
 		</antcall>
 	</target>
 
 	<target name="install-snapshot-artifacts">
 		<antcall target="install-artifacts">
-			<param name="lp.maven.version" value="${lp.version}-SNAPSHOT" />
+			<param name="lp.maven.version" value="${lp.version}-${pce.version}-SNAPSHOT" />
 		</antcall>
 	</target>
 

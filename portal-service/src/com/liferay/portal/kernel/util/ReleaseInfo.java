@@ -138,7 +138,7 @@ public class ReleaseInfo {
 
 	private static final String _CODE_NAME = "Paton";
 
-	private static final String _DATE = "July 31, 2012";
+	private static final String _DATE = "September 23, 2013";
 
 	private static final String _NAME = "Liferay Portal Community Edition";
 
@@ -154,7 +154,7 @@ public class ReleaseInfo {
 
 	private static final String _VERSION = "6.1.1";
 
-	private static final String _VERSION_DISPLAY_NAME = "6.1.1 CE GA2 Patched";
+	private static final String _VERSION_DISPLAY_NAME = "6.1.1-13.09.23 PCE GA2";
 
 	private static String _releaseInfo;
 	private static String _serverInfo;
