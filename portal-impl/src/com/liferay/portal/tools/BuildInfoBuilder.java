@@ -60,7 +60,7 @@ public class BuildInfoBuilder {
 			
 			String pceVersion = releaseProps.getProperty("pce.version");
 						
-			String versionDisplayName = version + "-" + pceVersion + " PCE GA2";
+			String versionDisplayName = version + "-" + pceVersion + " PCE GA3";
 			
 			x = content.indexOf("String _VERSION_DISPLAY_NAME = \"");
 
