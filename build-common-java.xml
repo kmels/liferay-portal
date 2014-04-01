@@ -94,36 +94,11 @@
 	</target>
 
 	<target name="jar" depends="compile">
-		<if>
-			<not>
-				<uptodate targetfile="${jar.file}.jar">
-					<srcfiles dir="classes" includes="**/*.*" />
-				</uptodate>
-			</not>
-			<then>
-				<if>
-					<available file="bnd.bnd" />
-					<then>
-						<baseline-jar-macro
-							bndRootFile="${project.dir}/common.bnd"
-							file="bnd.bnd"
-							outputPath="."
-							rootProjectDir="${project.dir}"
-							sourcePath="."
-						/>
-					</then>
-					<else>
-						<antcall target="manifest" />
-
 						<jar
 							basedir="classes"
 							jarfile="${jar.file}.jar"
 							manifest="classes/META-INF/MANIFEST.MF"
 						/>
-					</else>
-				</if>
-			</then>
-		</if>
 	</target>
 
 	<target name="jar-javadoc" depends="javadoc">
