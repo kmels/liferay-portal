@@ -26,7 +26,7 @@ String eventName = ParamUtil.getString(request, "eventName", liferayPortletRespo
 
 <liferay-portlet:renderURL varImpl="portletURL">
 	<portlet:param name="struts_action" value="/document_library/select_restricted_file_entry_type" />
-	<portlet:param name="includeBasicFileEntryType" value="1" />
+	<portlet:param name="includeBasicFileEntryType" value="<%= Boolean.TRUE.toString() %>" />
 </liferay-portlet:renderURL>
 
 <aui:form action="<%= portletURL.toString() %>" method="post" name="selectFileEntryTypeFm">

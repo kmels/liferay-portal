@@ -20,13 +20,17 @@
 String strutsAction = ParamUtil.getString(request, "strutsAction", "/document_library/view_file_entry_type");
 
 String toolbarItem = ParamUtil.getString(request, "toolbarItem");
+
+boolean includeBasicFileEntryType = ParamUtil.getBoolean(request, "includeBasicFileEntryType");
 %>
 
 <aui:nav-bar>
 	<aui:nav>
 		<portlet:renderURL var="viewFileEntryTypesURL">
 			<portlet:param name="struts_action" value="<%= strutsAction %>" />
-		</portlet:renderURL>
+            <portlet:param name="includeBasicFileEntryType" value="<%= String.valueOf(includeBasicFileEntryType) %>" />		
+
+    </portlet:renderURL>
 
 		<c:if test="<%= DLPermission.contains(permissionChecker, scopeGroupId, ActionKeys.ADD_DOCUMENT_TYPE) %>">
 			<portlet:renderURL var="addFileEntryTypeURL">
