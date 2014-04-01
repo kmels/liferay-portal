@@ -1,0 +1,87 @@
+
+<!-- saved from url=(0102)https://github.com/sergiogonzalez/liferay-portal/commit/eddaf057377b0934c72b9ac8a45813a7592cfeac.patch -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">From eddaf057377b0934c72b9ac8a45813a7592cfeac Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Iva=CC=81n=20Zaera=20Avello=CC=81n?=
+ &lt;ivan.zaera@liferay.com&gt;
+Date: Mon, 24 Feb 2014 10:58:32 +0100
+Subject: [PATCH] LPS-42940 Missing basic document type after return to
+ Document Types page
+
+---
+ portal-web/docroot/html/portlet/document_library/edit_folder.jsp      | 2 +-
+ .../docroot/html/portlet/document_library/file_entry_type_toolbar.jsp | 4 ++++
+ .../portlet/document_library/select_restricted_file_entry_type.jsp    | 3 ++-
+ .../docroot/html/portlet/document_library/view_file_entry_type.jsp    | 4 +++-
+ 4 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/portal-web/docroot/html/portlet/document_library/edit_folder.jsp b/portal-web/docroot/html/portlet/document_library/edit_folder.jsp
+index de62af3..e1b9633 100644
+--- a/portal-web/docroot/html/portlet/document_library/edit_folder.jsp
++++ b/portal-web/docroot/html/portlet/document_library/edit_folder.jsp
+@@ -315,7 +315,7 @@ if (workflowEnabled) {
+ 				eventName: '&lt;portlet:namespace /&gt;selectFileEntryType',
+ 				id: '&lt;portlet:namespace /&gt;fileEntryTypeSelector',
+ 				title: '&lt;%= UnicodeLanguageUtil.get(pageContext, "document-types") %&gt;',
+-				uri: '&lt;portlet:renderURL windowState="&lt;%= LiferayWindowState.POP_UP.toString() %&gt;"&gt;&lt;portlet:param name="struts_action" value="/document_library/select_restricted_file_entry_type" /&gt;&lt;portlet:param name="includeBasicFileEntryType" value="1" /&gt;&lt;/portlet:renderURL&gt;'
++				uri: '&lt;portlet:renderURL windowState="&lt;%= LiferayWindowState.POP_UP.toString() %&gt;"&gt;&lt;portlet:param name="struts_action" value="/document_library/select_restricted_file_entry_type" /&gt;&lt;portlet:param name="includeBasicFileEntryType" value="&lt;%= Boolean.TRUE.toString() %&gt;" /&gt;&lt;/portlet:renderURL&gt;'
+ 			},
+ 			function(event) {
+ 				&lt;portlet:namespace /&gt;selectFileEntryType(event.fileentrytypeid, event.fileentrytypename);
+diff --git a/portal-web/docroot/html/portlet/document_library/file_entry_type_toolbar.jsp b/portal-web/docroot/html/portlet/document_library/file_entry_type_toolbar.jsp
+index e91719d..832c8c9 100644
+--- a/portal-web/docroot/html/portlet/document_library/file_entry_type_toolbar.jsp
++++ b/portal-web/docroot/html/portlet/document_library/file_entry_type_toolbar.jsp
+@@ -20,12 +20,16 @@
+ String strutsAction = ParamUtil.getString(request, "strutsAction", "/document_library/view_file_entry_type");
+ 
+ String toolbarItem = ParamUtil.getString(request, "toolbarItem");
++
++boolean includeBasicFileEntryType = ParamUtil.getBoolean(request, "includeBasicFileEntryType");
+ %&gt;
+ 
+ &lt;aui:nav-bar&gt;
+ 	&lt;aui:nav&gt;
+ 		&lt;portlet:renderURL var="viewFileEntryTypesURL"&gt;
+ 			&lt;portlet:param name="struts_action" value="&lt;%= strutsAction %&gt;" /&gt;
++			&lt;portlet:param name="includeBasicFileEntryType" value="&lt;%= String.valueOf(includeBasicFileEntryType) %&gt;" /&gt;
++			
+ 		&lt;/portlet:renderURL&gt;
+ 
+ 		&lt;c:if test="&lt;%= DLPermission.contains(permissionChecker, scopeGroupId, ActionKeys.ADD_DOCUMENT_TYPE) %&gt;"&gt;
+diff --git a/portal-web/docroot/html/portlet/document_library/select_restricted_file_entry_type.jsp b/portal-web/docroot/html/portlet/document_library/select_restricted_file_entry_type.jsp
+index b9f6737..fa35795 100644
+--- a/portal-web/docroot/html/portlet/document_library/select_restricted_file_entry_type.jsp
++++ b/portal-web/docroot/html/portlet/document_library/select_restricted_file_entry_type.jsp
+@@ -22,11 +22,12 @@ String eventName = ParamUtil.getString(request, "eventName", liferayPortletRespo
+ 
+ &lt;liferay-util:include page="/html/portlet/document_library/file_entry_type_toolbar.jsp"&gt;
+ 	&lt;liferay-util:param name="strutsAction" value="/document_library/select_restricted_file_entry_type" /&gt;
++	&lt;liferay-util:param name="includeBasicFileEntryType" value="&lt;%= Boolean.TRUE.toString() %&gt;" /&gt;
+ &lt;/liferay-util:include&gt;
+ 
+ &lt;liferay-portlet:renderURL varImpl="portletURL"&gt;
+ 	&lt;portlet:param name="struts_action" value="/document_library/select_restricted_file_entry_type" /&gt;
+-	&lt;portlet:param name="includeBasicFileEntryType" value="1" /&gt;
++	&lt;portlet:param name="includeBasicFileEntryType" value="&lt;%= Boolean.TRUE.toString() %&gt;" /&gt;
+ &lt;/liferay-portlet:renderURL&gt;
+ 
+ &lt;aui:form action="&lt;%= portletURL.toString() %&gt;" method="post" name="selectFileEntryTypeFm"&gt;
+diff --git a/portal-web/docroot/html/portlet/document_library/view_file_entry_type.jsp b/portal-web/docroot/html/portlet/document_library/view_file_entry_type.jsp
+index 4270f58..eb93d2e 100644
+--- a/portal-web/docroot/html/portlet/document_library/view_file_entry_type.jsp
++++ b/portal-web/docroot/html/portlet/document_library/view_file_entry_type.jsp
+@@ -22,7 +22,9 @@ PortletURL portletURL = renderResponse.createRenderURL();
+ portletURL.setParameter("struts_action", "/document_library/view_file_entry_type");
+ %&gt;
+ 
+-&lt;liferay-util:include page="/html/portlet/document_library/file_entry_type_toolbar.jsp" /&gt;
++&lt;liferay-util:include page="/html/portlet/document_library/file_entry_type_toolbar.jsp" &gt;
++	&lt;liferay-util:param name="includeBasicFileEntryType" value="&lt;%= Boolean.FALSE.toString() %&gt;" /&gt;
++&lt;/liferay-util:include&gt;
+ 
+ &lt;liferay-ui:error exception="&lt;%= RequiredStructureException.class %&gt;" message="cannot-delete-a-document-type-that-is-presently-used-by-one-or-more-documents" /&gt;
+ 
+-- 
+1.8.5.5
+
+</pre></body></html>
