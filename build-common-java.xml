@@ -97,7 +97,6 @@
 						<jar
 							basedir="classes"
 							jarfile="${jar.file}.jar"
-							manifest="classes/META-INF/MANIFEST.MF"
 						/>
 	</target>
 
