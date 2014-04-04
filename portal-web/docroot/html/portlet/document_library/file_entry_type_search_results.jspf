@@ -23,7 +23,20 @@ total = DLFileEntryTypeServiceUtil.searchCount(company.getCompanyId(), PortalUti
 
 searchContainer.setTotal(total);
 
-results = DLFileEntryTypeServiceUtil.search(company.getCompanyId(), PortalUtil.getSiteAndCompanyGroupIds(themeDisplay), searchTerms.getKeywords(), includeBasicFileEntryType, searchContainer.getStart(), searchContainer.getEnd(), searchContainer.getOrderByComparator());
+/*System.out.println("Searching types");
+System.out.println("Searching keywords: "+searchTerms.getKeywords());*/
 
-searchContainer.setResults(results);
+long[] groupIds = PortalUtil.getSiteAndCompanyGroupIds(themeDisplay);
+List<DLFileEntryType> resultList = new java.util.LinkedList<DLFileEntryType>();
+results = DLFileEntryTypeServiceUtil.getFileEntryTypes(groupIds);
+
+long[] basicGroupIds = {0};
+List<DLFileEntryType> basicDocTypes = DLFileEntryTypeServiceUtil.getFileEntryTypes(basicGroupIds);
+
+resultList.addAll(basicDocTypes);
+resultList.addAll(results);
+
+//DLFileEntryTypeServiceUtil.search(company.getCompanyId(), PortalUtil.getSiteAndCompanyGroupIds(themeDisplay), searchTerms.getKeywords(), includeBasicFileEntryType, searchContainer.getStart(), searchContainer.getEnd(), searchContainer.getOrderByComparator());
+
+searchContainer.setResults(resultList);
 %>
