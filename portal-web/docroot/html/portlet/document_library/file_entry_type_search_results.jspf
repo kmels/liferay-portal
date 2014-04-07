@@ -15,22 +15,24 @@
 --%>
 
 <%
+long[] basicGroupIds = {0};
+long[] groupIds = PortalUtil.getSiteAndCompanyGroupIds(themeDisplay);
+
 StructureSearchTerms searchTerms = (StructureSearchTerms)searchContainer.getSearchTerms();
 
 boolean includeBasicFileEntryType = ParamUtil.getBoolean(renderRequest, "includeBasicFileEntryType");
 
-total = DLFileEntryTypeServiceUtil.searchCount(company.getCompanyId(), PortalUtil.getSiteAndCompanyGroupIds(themeDisplay), searchTerms.getKeywords(), includeBasicFileEntryType);
-
-searchContainer.setTotal(total);
+int basicDocTypeCount = DLFileEntryTypeServiceUtil.getFileEntryTypesCount(basicGroupIds);
+int docTypeCount = DLFileEntryTypeServiceUtil.getFileEntryTypesCount(groupIds);
+searchContainer.setTotal(basicDocTypeCount + docTypeCount);
 
 /*System.out.println("Searching types");
 System.out.println("Searching keywords: "+searchTerms.getKeywords());*/
 
-long[] groupIds = PortalUtil.getSiteAndCompanyGroupIds(themeDisplay);
 List<DLFileEntryType> resultList = new java.util.LinkedList<DLFileEntryType>();
 results = DLFileEntryTypeServiceUtil.getFileEntryTypes(groupIds);
 
-long[] basicGroupIds = {0};
+
 List<DLFileEntryType> basicDocTypes = DLFileEntryTypeServiceUtil.getFileEntryTypes(basicGroupIds);
 
 resultList.addAll(basicDocTypes);
